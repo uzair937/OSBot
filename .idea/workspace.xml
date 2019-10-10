@@ -1,18 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+  <component name="ChangeListManager">
+    <list default="true" id="b8f3383f-8c03-427f-be86-6c951bf131de" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/FlickerBot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NMZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/OSBot_2_5_53.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/osbot_2_5_60.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSBot 2.5.53.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSBot Scripting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OSBot Scripting.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Scripting/Skeleton" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OSBot Scripting/Skeleton" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Skeleton" beforeDir="false" afterPath="$PROJECT_DIR$/src/Skeleton" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1S1QV79LMcLbTPsXiW8IfatX6BH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OSBot 2.5.53.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/osbot 2.5.60.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b8f3383f-8c03-427f-be86-6c951bf131de" name="Default Changelist" comment="" />
+      <created>1570728642942</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570728642942</updated>
+      <workItem from="1570728644095" duration="13781000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

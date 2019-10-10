@@ -32,10 +32,10 @@ public final class Skeleton extends Script {
         getInventory(); // returns the Inventory instance
         myPlayer(); // returns the Player instance
         getWalking(); // returns the Walking instance
-        getPlayers() // returns an instance of Players
-        getNpcs() // returns an instance of NPCS
-        getGroundItems() // returns an instance of GroundItems
-        getObjects() // returns an instance of Objects
+        getPlayers(); // returns an instance of Players
+        getNpcs(); // returns an instance of NPCS
+        getGroundItems(); // returns an instance of GroundItems
+        getObjects(); // returns an instance of Objects
         return 0; //The amount of time in milliseconds before the loop starts over
     }
 
