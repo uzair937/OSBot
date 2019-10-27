@@ -1,3 +1,4 @@
+import org.osbot.rs07.api.def.EntityDefinition;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.model.Entity;
@@ -37,9 +38,9 @@ public final class Cow1337Killer extends Script {
         arrayList.add(new Position(3160, 3312, 0));
         arrayList.add(new Position(3176, 3315, 0));
 
-        if (myPosition() != finalPosition) {
+        /*if (myPosition() != finalPosition) {
             walker();
-        }
+        }*/
     }
 
     @Override
@@ -55,7 +56,7 @@ public final class Cow1337Killer extends Script {
         if (myPlayer().getInteracting() == null) {
             handler();
         }
-        return random(0, 100); //The amount of time in milliseconds before the loop starts over
+        return random(200, 600); //The amount of time in milliseconds before the loop starts over
     }
 
     private void handler() {
@@ -68,13 +69,15 @@ public final class Cow1337Killer extends Script {
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
+        } else {
+            attackCows();
         }
-        attackCows();
     }
 
     private void attackCows() {
         Entity npc  = getNpcs().closest("Cow", "Cow calf");
-        if (myPlayer().getInteracting() == null) {
+
+        if (!myPlayer().isUnderAttack()) {
             if (npc == null) {
                 walker();
             } else if (npc != null && npc.interact("Attack")) {

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f3383f-8c03-427f-be86-6c951bf131de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FlickerBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NMZ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/OSBot_2_5_53.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/osbot_2_5_60.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OSBot 2.5.53.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OSBot Scripting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OSBot Scripting.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Scripting/Skeleton" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OSBot Scripting/Skeleton" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Skeleton" beforeDir="false" afterPath="$PROJECT_DIR$/src/Skeleton" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Scripting/Cow1337Killer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OSBot Scripting/Cow1337Killer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cow1337Killer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cow1337Killer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +63,8 @@
       <option name="presentableId" value="Default" />
       <updated>1570728642942</updated>
       <workItem from="1570728644095" duration="13781000" />
+      <workItem from="1572176958650" duration="1349000" />
+      <workItem from="1572178509925" duration="427000" />
     </task>
     <servers />
   </component>
@@ -80,7 +76,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
