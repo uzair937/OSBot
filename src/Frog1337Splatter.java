@@ -38,7 +38,7 @@ public final class Frog1337Splatter extends Script {
         getBank();
 
         timeBegan = System.currentTimeMillis();
-        startXP = skills.getExperience(Skill.HITPOINTS)*3;
+        startXP = skills.getExperience(Skill.HITPOINTS) * 3;
 
         /*if (myPosition() != finalPosition) {
             walker();
@@ -55,7 +55,7 @@ public final class Frog1337Splatter extends Script {
     @Override
 
     public final int onLoop() throws InterruptedException {
-        currentXP = skills.getExperience(Skill.HITPOINTS)*3;
+        currentXP = skills.getExperience(Skill.HITPOINTS) * 3;
         if (myPlayer().getInteracting() == null) {
             handler();
         }
@@ -63,18 +63,22 @@ public final class Frog1337Splatter extends Script {
     }
 
     private void handler() {
-        if (myPlayer().getHealthPercent() <= 40 && getInventory().contains("Tuna")) {
-            getInventory().getItem("Tuna").interact("Eat");
-            Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
-        } else if (!getInventory().contains("Tuna")){
-            logoutTab.logOut();
+        if (myPlayer().getHealthPercent() <= 40) {
+            if (getInventory().contains("Tuna")) {
+                getInventory().getItem("Tuna").interact("Eat");
+                Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+            } else if (getInventory().contains("Wine")) {
+                getInventory().getItem("Wine").interact("Drink");
+                Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+            } else if (getInventory().isEmpty() || !getInventory().contains("Wine") || !getInventory().contains("Tuna"))
+                logoutTab.logOut();
         } else {
             attackFrogs();
         }
     }
 
     private void attackFrogs() {
-        NPC npc  = getNpcs().closest("Big frog", "Giant frog");
+        NPC npc = getNpcs().closest("Big frog", "Giant frog");
         int hp = npc.getHealthPercent();
         if (!myPlayer().isUnderAttack() && hp == 100) {
             if (npc != null && npc.interact("Attack")) {
@@ -117,7 +121,7 @@ public final class Frog1337Splatter extends Script {
         //This is where you will put your code for paint(s)
         timeRan = System.currentTimeMillis() - this.timeBegan;
         xpGained = currentXP - startXP;
-        xpPerHour = (int)( xpGained / ((System.currentTimeMillis() - this.timeBegan) / 3600000.0D));
+        xpPerHour = (int) (xpGained / ((System.currentTimeMillis() - this.timeBegan) / 3600000.0D));
 
         if (g.getColor() != Color.GREEN) {
             g.setColor(Color.GREEN);
@@ -127,8 +131,7 @@ public final class Frog1337Splatter extends Script {
         g.drawString("Frog 1337 Splatter by Uzair", 25, 65);
     }
 
-    private String timeString(long duration)
-    {
+    private String timeString(long duration) {
         String res = "";
         long days = TimeUnit.MILLISECONDS.toDays(duration);
         long hours = TimeUnit.MILLISECONDS.toHours(duration)
