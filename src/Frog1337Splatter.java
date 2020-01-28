@@ -1,4 +1,3 @@
-import org.osbot.rs07.api.def.EntityDefinition;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.model.Entity;
@@ -6,21 +5,24 @@ import org.osbot.rs07.api.model.NPC;
 import org.osbot.rs07.api.ui.Skill;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-@ScriptManifest(name = "Cow 1337 Leet Killer", author = "Uzair", version = 3.0, info = "Kills cows and calf's, eating Trout for food and banking.", logo = "")
+@ScriptManifest(name = "Frog 1337 Splatter", author = "Uzair", version = 1.0, info = "Kills froggy bois and eats tuna.", logo = "")
 
-public final class Cow1337Killer extends Script {
+public final class Frog1337Splatter extends Script {
 
-    private ArrayList<Position> arrayList = new ArrayList<>();
-    private Position finalPosition = new Position(3177,3316,0);
+    //private ArrayList<Position> positionList = new ArrayList<>();
+    //private Position finalPosition = new Position(3177,3316,0);
+
     private long timeBegan;
     private long timeRan;
     private int startXP;
     private int currentXP;
     private int xpGained;
+    private int xpPerHour;
 
     @Override
 
@@ -34,17 +36,6 @@ public final class Cow1337Killer extends Script {
         getGroundItems(); // returns an instance of GroundItems
         getObjects(); // returns an instance of Objects
         getBank();
-
-        arrayList.add(new Position(3092, 3245, 0));
-        arrayList.add(new Position(3102, 3255, 0));
-        arrayList.add(new Position(3103, 3272, 0));
-        arrayList.add(new Position(3109, 3284, 0));
-        arrayList.add(new Position(3116, 3293, 0));
-        arrayList.add(new Position(3124, 3300, 0));
-        arrayList.add(new Position(3137, 3307, 0));
-        arrayList.add(new Position(3147, 3310, 0));
-        arrayList.add(new Position(3160, 3312, 0));
-        arrayList.add(new Position(3176, 3315, 0));
 
         timeBegan = System.currentTimeMillis();
         startXP = skills.getExperience(Skill.HITPOINTS)*3;
@@ -72,41 +63,35 @@ public final class Cow1337Killer extends Script {
     }
 
     private void handler() {
-        if (myPlayer().getHealthPercent() <= 30 && getInventory().contains("Trout")) {
-            getInventory().getItem("Trout").interact("Eat");
+        if (myPlayer().getHealthPercent() <= 40 && getInventory().contains("Tuna")) {
+            getInventory().getItem("Tuna").interact("Eat");
             Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
-        } else if (!getInventory().contains("Trout")){
-            try {
-                goBank();
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
+        } else if (!getInventory().contains("Tuna")){
+            logoutTab.logOut();
         } else {
-            attackCows();
+            attackFrogs();
         }
     }
 
-    private void attackCows() {
-        NPC npc  = getNpcs().closest("Cow", "Cow calf");
+    private void attackFrogs() {
+        NPC npc  = getNpcs().closest("Big frog", "Giant frog");
         int hp = npc.getHealthPercent();
         if (!myPlayer().isUnderAttack() && hp == 100) {
-            if (npc == null) {
-                walker();
-            } else if (npc != null && npc.interact("Attack")) {
+            if (npc != null && npc.interact("Attack")) {
                 Sleep.sleepUntil(() -> myPlayer().isAnimating(), 1000);
             }
         }
     }
 
-    private void goBank() throws InterruptedException {
+    /*private void goBank() throws InterruptedException {
         getWalking().webWalk(Banks.DRAYNOR);
         if (Banks.DRAYNOR.contains(myPosition())) {
             bank.open();
-            if (getBank().contains("Trout") && getInventory().isEmpty()) {
-                bank.withdraw("Trout", 28);
+            if (getBank().contains("Tuna") && getInventory().isEmpty()) {
+                bank.withdraw("Tuna", 28);
             } else if (!getInventory().isEmpty()) {
                 bank.close();
-                walker();
+                //walker();
             } else {
                 stop();
             }
@@ -114,7 +99,7 @@ public final class Cow1337Killer extends Script {
     }
 
     private void walker() {
-        getWalking().walkPath(arrayList);
+        getWalking().walkPath(positionList);
         Entity gate = getObjects().closest(883);
         Entity openGate = getObjects().closest(23918);
         if (gate!=null) {
@@ -124,7 +109,7 @@ public final class Cow1337Killer extends Script {
             openGate.interact("Close");
             handler();
         }
-    }
+    }*/
 
     @Override
 
@@ -132,12 +117,14 @@ public final class Cow1337Killer extends Script {
         //This is where you will put your code for paint(s)
         timeRan = System.currentTimeMillis() - this.timeBegan;
         xpGained = currentXP - startXP;
+        xpPerHour = (int)( xpGained / ((System.currentTimeMillis() - this.timeBegan) / 3600000.0D));
 
         if (g.getColor() != Color.GREEN) {
             g.setColor(Color.GREEN);
         }
-        g.drawString("XP Gained: " + xpGained, 25, 50);
-        g.drawString("Time Running " + timeString(timeRan), 25, 35);
+        g.drawString("XP Gained: " + xpGained + " (XP/hr: " + xpPerHour + ")", 25, 50);
+        g.drawString("Time Running: " + timeString(timeRan), 25, 35);
+        g.drawString("Frog 1337 Splatter by Uzair", 25, 65);
     }
 
     private String timeString(long duration)
