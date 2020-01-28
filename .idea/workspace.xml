@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f3383f-8c03-427f-be86-6c951bf131de" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/OSBot 2.5.67.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Chicken1337Killer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/osbot_2_5_60.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/OSBot_2_5_67.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSBot Scripting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OSBot Scripting.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/osbot 2.5.60.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OSBot Scripting/Cow1337Killer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OSBot Scripting/Cow1337Killer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cow1337Killer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cow1337Killer.java" afterDir="false" />
     </list>
@@ -27,10 +32,11 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/osbot 2.5.60.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/OSBot 2.5.67.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -65,6 +71,11 @@
       <workItem from="1570728644095" duration="13781000" />
       <workItem from="1572176958650" duration="1349000" />
       <workItem from="1572178509925" duration="427000" />
+      <workItem from="1572186894528" duration="237000" />
+      <workItem from="1580149702263" duration="2124000" />
+      <workItem from="1580153158187" duration="965000" />
+      <workItem from="1580160728545" duration="140000" />
+      <workItem from="1580161204501" duration="150000" />
     </task>
     <servers />
   </component>
@@ -83,5 +94,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
