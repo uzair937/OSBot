@@ -63,14 +63,16 @@ public final class Frog1337Splatter extends Script {
     }
 
     private void handler() {
-        if (myPlayer().getHealthPercent() <= 40) {
+        if (myPlayer().getHealthPercent() <= 30) {
             if (getInventory().contains("Tuna")) {
                 getInventory().getItem("Tuna").interact("Eat");
                 Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
-            } else if (getInventory().contains("Wine")) {
-                getInventory().getItem("Wine").interact("Drink");
-                Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
-            } else if (getInventory().isEmpty() || !getInventory().contains("Wine") || !getInventory().contains("Tuna"))
+            } else if (getInventory().contains("Jug of wine")) {
+                if (myPlayer().getHealthPercent() <= 30) {
+                    getInventory().getItem("Jug of wine").interact("Drink");
+                    Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+                }
+            } else if (getInventory().isEmpty() || !getInventory().contains("Jug of wine") || !getInventory().contains("Tuna"))
                 logoutTab.logOut();
         } else {
             attackFrogs();
@@ -78,7 +80,7 @@ public final class Frog1337Splatter extends Script {
     }
 
     private void attackFrogs() {
-        NPC npc = getNpcs().closest("Big frog", "Giant frog");
+        NPC npc = getNpcs().closest("Frog", "Big frog");
         int hp = npc.getHealthPercent();
         if (!myPlayer().isUnderAttack() && hp == 100) {
             if (npc != null && npc.interact("Attack")) {
