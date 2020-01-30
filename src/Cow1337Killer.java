@@ -1,13 +1,17 @@
+import org.osbot.rs07.api.Chatbox;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.model.Entity;
 import org.osbot.rs07.api.model.NPC;
 import org.osbot.rs07.api.model.RS2Object;
 import org.osbot.rs07.api.ui.Skill;
+
 import java.util.List;
+
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
 import org.osbot.rs07.api.ui.Tab;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -58,15 +62,18 @@ public final class Cow1337Killer extends Script {
     @Override
 
     public final int onLoop() throws InterruptedException {
+        currentXP = skills.getExperience(Skill.HITPOINTS) * 3;
+
         int randVal = random.nextInt(100000);
+
+        if (myPlayer().getInteracting() == null || getDialogues() != null) {
+            handler();
+        }
+
         if (randVal >= 99000 || randVal <= 1000) {
             antiBan();
         }
 
-        currentXP = skills.getExperience(Skill.HITPOINTS) * 3;
-        if (myPlayer().getInteracting() == null) {
-            handler();
-        }
         return random(400, 600); //The amount of time in milliseconds before the loop starts over
     }
 
@@ -76,21 +83,22 @@ public final class Cow1337Killer extends Script {
 
         int randomValue = random2.nextInt(100);
 
-        switch(randomValue) {
-            default: break;
-                case 1:
-                    getCamera().moveYaw(random(12, 14) + this.random.nextInt(random(12, 14) + this.random.nextInt(random(30, 35))));
-                    break;
+        switch (randomValue) {
+            default:
+                break;
+            case 1:
+                getCamera().moveYaw(random(12, 14) + this.random.nextInt(random(12, 14) + this.random.nextInt(random(30, 35))));
+                break;
             case 22:
-                case 24:
-                case 27:
-                case 52:
-                    getCamera().movePitch(random2.nextInt(random(200, 400)));
-                    break;
+            case 24:
+            case 27:
+            case 52:
+                getCamera().movePitch(random2.nextInt(random(200, 400)));
+                break;
             case 38:
-                case 99:
-                case 90:
-                case 0:
+            case 99:
+            case 90:
+            case 0:
                 try {
                     sleep(random(250, 500));
                 } catch (InterruptedException e) {
@@ -207,17 +215,24 @@ public final class Cow1337Killer extends Script {
             } else if (getInventory().contains("Jug of wine")) {
                 if (myPlayer().getHealthPercent() <= 30) {
                     getInventory().getItem("Jug of wine").interact("Drink");
-                    Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.out.println(e);
+                    }
                 }
+                Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
             } else if (getInventory().contains("Tuna")) {
                 getInventory().getItem("Tuna").interact("Eat");
                 Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
             } else if (!getInventory().contains("Trout") || !getInventory().contains("Jug of wine") || !getInventory().contains("Tuna")) {
-                try {
+                getLogoutTab().logOut();
+                stop();
+                /*try {
                     goBank();
                 } catch (InterruptedException e) {
                     System.out.println(e);
-                }
+                }*/
             }
         } else {
             attackCows();
@@ -227,7 +242,7 @@ public final class Cow1337Killer extends Script {
     private void attackCows() {
         NPC npc = getNpcs().closest("Cow", "Cow calf");
         int hp = npc.getHealthPercent();
-        if (!myPlayer().isUnderAttack() && hp == 100) {
+        if (!myPlayer().isAnimating() && hp == 100) {
             if (npc == null) {
                 walker();
             } else if (npc != null && npc.interact("Attack")) {
