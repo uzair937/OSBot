@@ -1,21 +1,24 @@
-import org.osbot.rs07.api.def.EntityDefinition;
 import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.model.Entity;
 import org.osbot.rs07.api.model.NPC;
+import org.osbot.rs07.api.model.RS2Object;
 import org.osbot.rs07.api.ui.Skill;
+import java.util.List;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
-
+import org.osbot.rs07.api.ui.Tab;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
-@ScriptManifest(name = "Cow 1337 Leet Killer", author = "Uzair", version = 4.0, info = "Kills cows and calf's, eating Trout for food and banking.", logo = "")
+@ScriptManifest(name = "Cow 1337 Leet Killer", author = "Uzair", version = 5.0, info = "Kills cows and calf's, eating Trout for food and banking.", logo = "")
 
 public final class Cow1337Killer extends Script {
 
-    private ArrayList<Position> arrayList = new ArrayList<>();
+    private ArrayList<Position> positionList = new ArrayList<>();
     private Position finalPosition = new Position(3177, 3316, 0);
     private long timeBegan;
     private long timeRan;
@@ -23,6 +26,8 @@ public final class Cow1337Killer extends Script {
     private int currentXP;
     private int xpGained;
     private int xpPerHour;
+    private Random random;
+    private int antiCount;
 
     @Override
 
@@ -30,30 +35,15 @@ public final class Cow1337Killer extends Script {
         //Code here will execute before the loop is started
 
         log("The script has started.");
-        getPlayers(); // returns an instance of Players
         getInventory(); //returns the player inventory
         getNpcs(); // returns an instance of NPCS
         getGroundItems(); // returns an instance of GroundItems
         getObjects(); // returns an instance of Objects
-        getBank();
+        setupList(); // sets up walking positions list
 
-        arrayList.add(new Position(3092, 3245, 0));
-        arrayList.add(new Position(3102, 3255, 0));
-        arrayList.add(new Position(3103, 3272, 0));
-        arrayList.add(new Position(3109, 3284, 0));
-        arrayList.add(new Position(3116, 3293, 0));
-        arrayList.add(new Position(3124, 3300, 0));
-        arrayList.add(new Position(3137, 3307, 0));
-        arrayList.add(new Position(3147, 3310, 0));
-        arrayList.add(new Position(3160, 3312, 0));
-        arrayList.add(new Position(3176, 3315, 0));
-
+        random = new Random();
         timeBegan = System.currentTimeMillis();
         startXP = skills.getExperience(Skill.HITPOINTS) * 3;
-
-        /*if (myPosition() != finalPosition) {
-            walker();
-        }*/
     }
 
     @Override
@@ -68,11 +58,121 @@ public final class Cow1337Killer extends Script {
     @Override
 
     public final int onLoop() throws InterruptedException {
+        int randVal = random.nextInt(100000);
+        if (randVal >= 97500 || randVal <= 2500) {
+            antiBan();
+        }
+
         currentXP = skills.getExperience(Skill.HITPOINTS) * 3;
         if (myPlayer().getInteracting() == null) {
             handler();
         }
-        return random(200, 600); //The amount of time in milliseconds before the loop starts over
+        return random(400, 600); //The amount of time in milliseconds before the loop starts over
+    }
+
+    private void antiBan() {
+        antiCount++;
+        Random random2 = new Random();
+
+        int randomValue = random2.nextInt(100);
+
+        switch(randomValue) {
+            default: break;
+                case 1:
+                case 22:
+                case 24:
+                case 27:
+                case 52:
+                case 38:
+                case 99:
+                case 90:
+                case 0:
+                try {
+                    sleep(random(250, 500));
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
+                break;
+            case 6:
+            case 29:
+            case 33:
+            case 91:
+            case 42:
+            case 77:
+            case 21:
+                getCamera().movePitch(random2.nextInt(random(330, 660)));
+                getCamera().moveYaw(random(18, 22) + this.random.nextInt(random(18, 22) + this.random.nextInt(random(40, 45))));
+                break;
+            case 9:
+            case 10:
+            case 53:
+            case 71:
+            case 82:
+            case 73:
+            case 11:
+                try {
+                    List<RS2Object> visibleObjs = getObjects().getAll().stream().filter(o -> o.isVisible()).collect(Collectors.toList());
+                    // select a random object
+                    int index = random(0, visibleObjs.size() - 1);
+                    RS2Object obj = visibleObjs.get(index);
+                    if (obj != null) {
+                        // hover the object and right click
+                        sleep(random(50, 100));
+                        obj.hover();
+                        getMouse().click(true);
+                        // while the menu is still open, move the mouse to a new location
+                        while (getMenuAPI().isOpen()) {
+                            sleep(random(50, 100));
+                            moveMouseRandomly(random(0, 2));
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
+                break;
+            case 43:
+            case 30:
+                getTabs().open(Tab.MAGIC);
+                break;
+            case 69:
+                getTabs().open(Tab.SKILLS);
+                break;
+            case 14:
+            case 80:
+            case 56:
+                getTabs().open(Tab.FRIENDS);
+                break;
+            case 66:
+                getTabs().open(Tab.ATTACK);
+                break;
+        }
+    }
+
+    public void moveMouseRandomly(int numberOfPositions) {
+        Point[] pointArray = new Point[numberOfPositions];
+        for (int i = 0; i < pointArray.length; i++) {
+            pointArray[i] = new Point(-10 + this.random.nextInt(850), -10 + this.random.nextInt(550));
+        }
+        for (int i = 0; i < pointArray.length; i++) {
+            getMouse().move(pointArray[i].x, pointArray[i].y);
+            try {
+                sleep(random(100, 300));
+            } catch (InterruptedException e) {
+            }
+        }
+    }
+
+    private void setupList() {
+        positionList.add(new Position(3092, 3245, 0));
+        positionList.add(new Position(3102, 3255, 0));
+        positionList.add(new Position(3103, 3272, 0));
+        positionList.add(new Position(3109, 3284, 0));
+        positionList.add(new Position(3116, 3293, 0));
+        positionList.add(new Position(3124, 3300, 0));
+        positionList.add(new Position(3137, 3307, 0));
+        positionList.add(new Position(3147, 3310, 0));
+        positionList.add(new Position(3160, 3312, 0));
+        positionList.add(new Position(3176, 3315, 0));
     }
 
     private void handler() {
@@ -138,7 +238,7 @@ public final class Cow1337Killer extends Script {
     }
 
     private void walker() {
-        getWalking().walkPath(arrayList);
+        getWalking().walkPath(positionList);
         Entity gate = getObjects().closest(883);
         Entity openGate = getObjects().closest(23918);
         if (gate != null) {
@@ -163,7 +263,8 @@ public final class Cow1337Killer extends Script {
         }
         g.drawString("XP Gained: " + xpGained + " (XP/hr: " + xpPerHour + ")", 25, 50);
         g.drawString("Time Running " + timeString(timeRan), 25, 35);
-        g.drawString("Cow 1337 Killer V4 by Uzair", 25, 65);
+        g.drawString("AntiBan executions: " + antiCount, 25, 65);
+        g.drawString("Cow 1337 Killer V4 by Uzair", 25, 95);
     }
 
     private String timeString(long duration) {
