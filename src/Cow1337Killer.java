@@ -59,7 +59,7 @@ public final class Cow1337Killer extends Script {
 
     public final int onLoop() throws InterruptedException {
         int randVal = random.nextInt(100000);
-        if (randVal >= 97500 || randVal <= 2500) {
+        if (randVal >= 99000 || randVal <= 1000) {
             antiBan();
         }
 
@@ -79,11 +79,15 @@ public final class Cow1337Killer extends Script {
         switch(randomValue) {
             default: break;
                 case 1:
-                case 22:
+                    getCamera().moveYaw(random(12, 14) + this.random.nextInt(random(12, 14) + this.random.nextInt(random(30, 35))));
+                    break;
+            case 22:
                 case 24:
                 case 27:
                 case 52:
-                case 38:
+                    getCamera().movePitch(random2.nextInt(random(200, 400)));
+                    break;
+            case 38:
                 case 99:
                 case 90:
                 case 0:
@@ -181,8 +185,10 @@ public final class Cow1337Killer extends Script {
                 getInventory().getItem("Trout").interact("Eat");
                 Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
             } else if (getInventory().contains("Jug of wine")) {
-                getInventory().getItem("Jug of wine").interact("Drink");
-                Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+                if (myPlayer().getHealthPercent() <= 30) {
+                    getInventory().getItem("Jug of wine").interact("Drink");
+                    Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
+                }
             } else if (getInventory().contains("Tuna")) {
                 getInventory().getItem("Tuna").interact("Eat");
                 Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
