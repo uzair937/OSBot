@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-@ScriptManifest(name = "Cow 1337 Leet Killer", author = "Uzair", version = 5.0, info = "Kills cows and calf's, eating Trout for food and banking.", logo = "")
+@ScriptManifest(name = "Cow 1337 Leet Killer", author = "Uzair", version = 5.0, info = "Kills cows and calves, drinks wine, eats trout and eats tuna for food and broken banking.", logo = "")
 
 public final class Cow1337Killer extends Script {
 
@@ -115,44 +115,64 @@ public final class Cow1337Killer extends Script {
             case 73:
             case 11:
                 try {
-                    List<RS2Object> visibleObjs = getObjects().getAll().stream().filter(o -> o.isVisible()).collect(Collectors.toList());
-                    // select a random object
-                    int index = random(0, visibleObjs.size() - 1);
-                    RS2Object obj = visibleObjs.get(index);
-                    if (obj != null) {
-                        // hover the object and right click
-                        sleep(random(50, 100));
-                        obj.hover();
-                        getMouse().click(true);
-                        // while the menu is still open, move the mouse to a new location
-                        while (getMenuAPI().isOpen()) {
-                            sleep(random(50, 100));
-                            moveMouseRandomly(random(0, 2));
-                        }
-                    }
+                    randomRightClick();
                 } catch (InterruptedException e) {
                     System.out.println(e);
                 }
                 break;
             case 43:
             case 30:
-                getTabs().open(Tab.MAGIC);
+                if (getTabs().isOpen(Tab.MAGIC)) {
+                    getTabs().open(Tab.QUEST);
+                } else {
+                    getTabs().open(Tab.MAGIC);
+                }
                 break;
             case 69:
-                getTabs().open(Tab.SKILLS);
+                if (getTabs().isOpen(Tab.SKILLS)) {
+                    getTabs().open(Tab.EQUIPMENT);
+                } else {
+                    getTabs().open(Tab.SKILLS);
+                }
                 break;
             case 14:
             case 80:
             case 56:
-                getTabs().open(Tab.FRIENDS);
+                if (getTabs().isOpen(Tab.FRIENDS)) {
+                    getTabs().open(Tab.CLANCHAT);
+                } else {
+                    getTabs().open(Tab.FRIENDS);
+                }
                 break;
             case 66:
-                getTabs().open(Tab.ATTACK);
+                if (getTabs().isOpen(Tab.ATTACK)) {
+                    getTabs().open(Tab.PRAYER);
+                } else {
+                    getTabs().open(Tab.ATTACK);
+                }
                 break;
         }
     }
 
-    public void moveMouseRandomly(int numberOfPositions) {
+    private void randomRightClick() throws InterruptedException {
+        List<RS2Object> visibleObjs = getObjects().getAll().stream().filter(o -> o.isVisible()).collect(Collectors.toList());
+        // select a random object
+        int index = random(0, visibleObjs.size() - 1);
+        RS2Object obj = visibleObjs.get(index);
+        if (obj != null) {
+            // hover the object and right click
+            sleep(random(50, 100));
+            obj.hover();
+            getMouse().click(true);
+            // while the menu is still open, move the mouse to a new location
+            while (getMenuAPI().isOpen()) {
+                sleep(random(50, 100));
+                moveMouseRandomly(random(0, 2));
+            }
+        }
+    }
+
+    private void moveMouseRandomly(int numberOfPositions) {
         Point[] pointArray = new Point[numberOfPositions];
         for (int i = 0; i < pointArray.length; i++) {
             pointArray[i] = new Point(-10 + this.random.nextInt(850), -10 + this.random.nextInt(550));
@@ -270,7 +290,7 @@ public final class Cow1337Killer extends Script {
         g.drawString("XP Gained: " + xpGained + " (XP/hr: " + xpPerHour + ")", 25, 50);
         g.drawString("Time Running " + timeString(timeRan), 25, 35);
         g.drawString("AntiBan executions: " + antiCount, 25, 65);
-        g.drawString("Cow 1337 Killer V4 by Uzair", 25, 95);
+        g.drawString("Cow 1337 Killer V5 by Uzair (NEW ANTIBAN FEATURES!!!)", 25, 95);
     }
 
     private String timeString(long duration) {
