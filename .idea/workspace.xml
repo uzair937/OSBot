@@ -30,20 +30,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Frog1337Splatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2074">
-              <caret line="132" column="29" selection-start-line="132" selection-end-line="133" />
+            <state relative-caret-position="170">
+              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cow1337Killer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="240" lean-forward="true" selection-start-line="240" selection-end-line="240" />
+            <state relative-caret-position="243">
+              <caret line="194" column="68" lean-forward="true" selection-start-line="194" selection-start-column="68" selection-end-line="196" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,6 +74,9 @@
       <find>public</find>
       <find>handler</find>
       <find>attackco</find>
+      <find>this.methodProvider</find>
+      <find>`</find>
+      <find>methodProvider.</find>
     </findStrings>
     <replaceStrings>
       <replace>positionList</replace>
@@ -88,9 +91,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Frog1337Splatter.java" />
         <option value="$PROJECT_DIR$/src/AntiBan.java" />
         <option value="$PROJECT_DIR$/src/Cow1337Killer.java" />
+        <option value="$PROJECT_DIR$/src/Frog1337Splatter.java" />
       </list>
     </option>
   </component>
@@ -115,7 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,6 +134,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -196,11 +199,16 @@
       <workItem from="1580414863136" duration="1640000" />
       <workItem from="1580417657060" duration="988000" />
       <workItem from="1580419069512" duration="1240000" />
+      <workItem from="1580451935684" duration="720000" />
+      <workItem from="1580453951297" duration="195000" />
+      <workItem from="1580454240521" duration="115000" />
+      <workItem from="1580491793324" duration="728000" />
+      <workItem from="1580828541815" duration="1216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10693000" />
+    <option name="totallyTimeSpent" value="13667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -225,7 +233,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.16717096" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.1785174" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
@@ -279,29 +287,38 @@
     <entry file="jar://$PROJECT_DIR$/OSBot 2.5.67.jar!/org/osbot/rs07/script/MethodProvider.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="110" column="16" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+          <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
           <folding>
-            <element signature="e#3954#3955#0" expanded="true" />
-            <element signature="e#4008#4009#0" expanded="true" />
+            <element signature="e#5685#5686#0" expanded="true" />
+            <element signature="e#5727#5728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AntiBan.java" />
-    <entry file="file://$PROJECT_DIR$/src/Frog1337Splatter.java">
+    <entry file="file://$PROJECT_DIR$/src/AntiBan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="132" column="29" selection-start-line="132" selection-end-line="133" />
+        <state relative-caret-position="1700">
+          <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cow1337Killer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="240" lean-forward="true" selection-start-line="240" selection-end-line="240" />
+        <state relative-caret-position="243">
+          <caret line="194" column="68" lean-forward="true" selection-start-line="194" selection-start-column="68" selection-end-line="196" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Frog1337Splatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>

@@ -8,9 +8,10 @@ import org.osbot.rs07.script.ScriptManifest;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-@ScriptManifest(name = "Frog 1337 Splatter", author = "Uzair", version = 1.0, info = "Kills froggy bois and eats tuna.", logo = "")
+@ScriptManifest(name = "Frog 1337 Splatter", author = "Uzair", version = 2.0, info = "Kills froggy bois and eats tuna.", logo = "")
 
 public final class Frog1337Splatter extends Script {
 
@@ -23,6 +24,8 @@ public final class Frog1337Splatter extends Script {
     private int currentXP;
     private int xpGained;
     private int xpPerHour;
+    private Random random;
+    private AntiBan antiBan;
 
     @Override
 
@@ -39,10 +42,7 @@ public final class Frog1337Splatter extends Script {
 
         timeBegan = System.currentTimeMillis();
         startXP = skills.getExperience(Skill.HITPOINTS) * 3;
-
-        /*if (myPosition() != finalPosition) {
-            walker();
-        }*/
+        antiBan = new AntiBan();
     }
 
     @Override
@@ -56,10 +56,18 @@ public final class Frog1337Splatter extends Script {
 
     public final int onLoop() throws InterruptedException {
         currentXP = skills.getExperience(Skill.HITPOINTS) * 3;
-        if (myPlayer().getInteracting() == null) {
+
+        int randVal = random.nextInt(100000);
+
+        if (myPlayer().getInteracting() == null || getDialogues() != null) {
             handler();
         }
-        return random(200, 600); //The amount of time in milliseconds before the loop starts over
+
+        if (randVal >= 99000 || randVal <= 1000) {
+            antiBan.execute();
+        }
+
+        return random(400, 600); //The amount of time in milliseconds before the loop starts over
     }
 
     private void handler() {
@@ -89,34 +97,6 @@ public final class Frog1337Splatter extends Script {
         }
     }
 
-    /*private void goBank() throws InterruptedException {
-        getWalking().webWalk(Banks.DRAYNOR);
-        if (Banks.DRAYNOR.contains(myPosition())) {
-            bank.open();
-            if (getBank().contains("Tuna") && getInventory().isEmpty()) {
-                bank.withdraw("Tuna", 28);
-            } else if (!getInventory().isEmpty()) {
-                bank.close();
-                //walker();
-            } else {
-                stop();
-            }
-        }
-    }
-
-    private void walker() {
-        getWalking().walkPath(positionList);
-        Entity gate = getObjects().closest(883);
-        Entity openGate = getObjects().closest(23918);
-        if (gate!=null) {
-            gate.interact("Open");
-        } else if (openGate != null) {
-            getWalking().walk(finalPosition);
-            openGate.interact("Close");
-            handler();
-        }
-    }*/
-
     @Override
 
     public void onPaint(Graphics2D g) {
@@ -125,11 +105,12 @@ public final class Frog1337Splatter extends Script {
         xpGained = currentXP - startXP;
         xpPerHour = (int) (xpGained / ((System.currentTimeMillis() - this.timeBegan) / 3600000.0D));
 
-        if (g.getColor() != Color.GREEN) {
-            g.setColor(Color.GREEN);
+        if (g.getColor() != Color.RED) {
+            g.setColor(Color.RED);
         }
         g.drawString("XP Gained: " + xpGained + " (XP/hr: " + xpPerHour + ")", 25, 50);
         g.drawString("Time Running: " + timeString(timeRan), 25, 35);
+        g.drawString("AntiBan executions: " + antiBan.antiCount, 25, 65);
         g.drawString("Frog 1337 Splatter by Uzair", 25, 65);
     }
 
