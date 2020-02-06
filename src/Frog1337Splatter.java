@@ -2,6 +2,7 @@ import org.osbot.rs07.api.map.Position;
 import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.model.Entity;
 import org.osbot.rs07.api.model.NPC;
+import org.osbot.rs07.api.ui.EquipmentSlot;
 import org.osbot.rs07.api.ui.Skill;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
@@ -38,11 +39,11 @@ public final class Frog1337Splatter extends Script {
         getNpcs(); // returns an instance of NPCS
         getGroundItems(); // returns an instance of GroundItems
         getObjects(); // returns an instance of Objects
-        getBank();
 
+        random = new Random();
         timeBegan = System.currentTimeMillis();
         startXP = skills.getExperience(Skill.HITPOINTS) * 3;
-        antiBan = new AntiBan();
+        antiBan = new AntiBan(this);
     }
 
     @Override
@@ -50,6 +51,8 @@ public final class Frog1337Splatter extends Script {
     public void onExit() {
         //Code here will execute after the script ends
         log("The script has ended.");
+        log("Total XP gained: " + xpGained);
+        log("Total time ran: " + timeRan);
     }
 
     @Override
@@ -81,13 +84,18 @@ public final class Frog1337Splatter extends Script {
                     Sleep.sleepUntil(() -> myPlayer().isAnimating(), 500);
                 }
             } else if (getInventory().isEmpty() || !getInventory().contains("Jug of wine") || !getInventory().contains("Tuna"))
-                logoutTab.logOut();
+                getLogoutTab().logOut();
+                stop();
         } else {
             attackFrogs();
         }
     }
 
     private void attackFrogs() {
+        if (!getEquipment().isWearingItemThatContains(EquipmentSlot.ARROWS,"arrow")) {
+            getLogoutTab().logOut();
+            stop();
+        }
         NPC npc = getNpcs().closest("Frog", "Big frog");
         int hp = npc.getHealthPercent();
         if (!myPlayer().isUnderAttack() && hp == 100) {
@@ -111,7 +119,7 @@ public final class Frog1337Splatter extends Script {
         g.drawString("XP Gained: " + xpGained + " (XP/hr: " + xpPerHour + ")", 25, 50);
         g.drawString("Time Running: " + timeString(timeRan), 25, 35);
         g.drawString("AntiBan executions: " + antiBan.antiCount, 25, 65);
-        g.drawString("Frog 1337 Splatter by Uzair", 25, 65);
+        g.drawString("Frog 1337 Splatter by Uzair", 25, 95);
     }
 
     private String timeString(long duration) {

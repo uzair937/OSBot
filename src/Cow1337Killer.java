@@ -49,7 +49,7 @@ public final class Cow1337Killer extends Script {
         random = new Random();
         timeBegan = System.currentTimeMillis();
         startXP = skills.getExperience(Skill.HITPOINTS) * 3;
-        antiBan = new AntiBan();
+        antiBan = new AntiBan(this);
     }
 
     @Override
@@ -57,7 +57,7 @@ public final class Cow1337Killer extends Script {
     public void onExit() {
         //Code here will execute after the script ends
         log("The script has ended.");
-        log("Total XP gained: " + currentXP);
+        log("Total XP gained: " + xpGained);
         log("Total time ran: " + timeRan);
     }
 
